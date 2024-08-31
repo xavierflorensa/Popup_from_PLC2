@@ -377,5 +377,117 @@ Children:
       DataType: Size
       ModellingRule: Optional
       Value: 50.0
+  - Name: Variable1
+    Type: BaseDataVariableType
+    DataType: Int32
+    Children:
+    - Name: DynamicLink
+      Type: DynamicLink
+      DataType: NodePath
+      Value: "/Objects/Popup_from_PLC2/Model/Variable1"
+      Children:
+      - Name: Mode
+        Type: BaseVariableType
+        DataType: DynamicLinkMode
+        ModellingRule: Optional
+        Value: 2
+  - Name: Variable1Changed
+    Type: VariableChangedEventDispatcher
+    Children:
+    - Name: VariableNodePath
+      Type: BaseVariableType
+      DataType: NodePath
+      Value: "../Variable1"
+    - Name: VariableValueChangedEventHandler1
+      Type: EventHandler
+      Children:
+      - Name: ListenEventType
+        Type: PropertyType
+        DataType: NodeId
+        Value: "/Types/EventTypes/BaseEventType/VariableConditionEvent/VariableValueChangedEvent"
+      - Name: MethodsToCall
+        Type: BaseObjectType
+        Children:
+        - Name: MethodContainer1
+          Type: BaseObjectType
+          Children:
+          - Name: ns=3;ObjectPointer
+            Type: NodePointer
+            DataType: NodeId
+            Value: "/Objects/Commands/UICommands"
+            Children:
+            - Name: Kind
+              Type: PropertyType
+              DataType: NodeId
+              Value: "/Types/ObjectTypes/BaseObjectType"
+          - Name: ns=3;Method
+            Type: BaseDataVariableType
+            DataType: String
+            Value: "OpenDialog"
+          - Name: InputArguments
+            Type: BaseObjectType
+            Children:
+            - Name: Dialog
+              Type: BaseDataVariableType
+              DataType: NodeId
+              Description: {"NamespaceIndex":5,"TextId":"OpenDialogDialogDescription"}
+              Value: "/Objects/Popup_from_PLC2/UI/Panels/DialogBox1"
+            - Name: AliasNode
+              Type: BaseDataVariableType
+              DataType: NodeId
+              Description: {"NamespaceIndex":5,"TextId":"OpenDialogAliasNodeDescription"}
+              ValueRank: ScalarOrOneDimension
+            - Name: ParentItem
+              Type: BaseDataVariableType
+              DataType: NodeId
+              Description: {"NamespaceIndex":5,"TextId":"OpenDialogParentItemDescription"}
+              Children:
+              - Name: DynamicLink
+                Type: DynamicLink
+                DataType: NodePath
+                Value: "../../../../../..@NodeId"
+          - Name: OutputArguments
+            Type: BaseObjectType
+            Children:
+            - Name: DialogNodeId
+              Type: BaseDataVariableType
+              DataType: NodeId
+              Description: {"NamespaceIndex":5,"TextId":"OpenDialogDialogNodeIdDescription"}
+      - Name: EventArguments
+        Type: VariableValueChangedEvent
+        Children:
+        - Name: VariableNodeId
+          Type: BaseVariableType
+          DataType: NodeId
+        - Name: NewValue
+          Type: BaseVariableType
+          DataType: BaseDataType
+        - Name: OldValue
+          Type: BaseVariableType
+          DataType: BaseDataType
+        - Name: EventId
+          Type: PropertyType
+          DataType: ByteString
+        - Name: EventType
+          Type: PropertyType
+          DataType: NodeId
+        - Name: SourceNode
+          Type: PropertyType
+          DataType: NodeId
+        - Name: SourceName
+          Type: PropertyType
+          DataType: String
+        - Name: Time
+          Type: PropertyType
+          DataType: UtcTime
+        - Name: ReceiveTime
+          Type: PropertyType
+          DataType: UtcTime
+        - Name: Message
+          Type: PropertyType
+          DataType: LocalizedText
+        - Name: Severity
+          Type: PropertyType
+          DataType: UInt16
 - File: Screens/Screens.yaml
 - File: Panels/Panels.yaml
